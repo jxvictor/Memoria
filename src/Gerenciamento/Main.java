@@ -19,7 +19,8 @@ public class Main {
 				double tamTotalProcessosGerados = 0;
 				public void run() {
 					Processo processo;
-		        	processo = GeradorProcessos.gerar();
+					processo = GeradorProcessos.gerar();
+					processo = GeradorProcessos.gerar();
 		        	tamTotalProcessosGerados += processo.getTamanhoAloc();
 		        	System.out.println("PROCESSO CRIADO!");
 		        	System.out.println("Tamanho Alocação: " + processo.getTamanhoAloc());
