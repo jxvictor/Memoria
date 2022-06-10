@@ -44,13 +44,32 @@ public class Main {
 		        	
 		        	Memoria.removerAleatorio();
 		        	System.out.println(Memoria.getProcessos());
-		        	
+
+					Algoritmo algoritmo = new Algoritmo();
+
+					int contadorDeProcessos = 0;
+					while (contadorDeProcessos < 100) {
+						algoritmo.inserirFirstFit(processo);
+						algoritmo.inserirNextFit(processo);
+						algoritmo.inserirWorstFit(processo);
+						algoritmo.inserirBestFit(processo);
+						tamTotalProcessosGerados += processo.getTamanhoAloc();
+
+						algoritmo.inserirFirstFit(processo1);
+						algoritmo.inserirNextFit(processo1);
+						algoritmo.inserirWorstFit(processo1);
+						algoritmo.inserirBestFit(processo1);
+						tamTotalProcessosGerados += processo1.getTamanhoAloc();
+						contadorDeProcessos++;
+					}
+
 		        	count++;
 		        	tamTotalProcessosGerados ++;
-		        	if (count == 5) {
+		        	if (count == 100) {
 		        		timer.cancel();
 		        		System.out.println("-------------RELATÓRIO--------------");
-		                System.out.println("Tamanho médio dos processos gerados: " + tamTotalProcessosGerados/100);
+		                System.out.println("Tamanho médio dos processos gerados: " + tamTotalProcessosGerados/1000);
+						System.out.println("Taxa de descarte: " + algoritmo.getTotalProcessosDescartados());
 		        	}
 				}
 			};
